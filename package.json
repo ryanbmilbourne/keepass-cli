@@ -1,0 +1,23 @@
+{
+  "name": "keepass-cli",
+  "version": "0.0.1",
+  "description": "Command-line interface for KeePass",
+  "main": "index.js",
+  "dependencies": {
+    "keepass.io": "^1.0.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ryanbmilbourne/keepass-cli.git"
+  },
+  "author": "ryanbmilbourne",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ryanbmilbourne/keepass-cli/issues"
+  },
+  "homepage": "https://github.com/ryanbmilbourne/keepass-cli"
+}
