@@ -3,7 +3,7 @@ keepass-cli
 
 A KeePass command line tool, written in node.js
 
-The only command line tool I could find out there was written in perl, with dodgy support for OS X, so I'm going to write on in a more portable language.
+The only command line tool I could find out there was written in perl, with dodgy support for OS X, so I'm going to write one in a more portable language.
 
 Features I'm aiming for:
 - Create/edit local databases
