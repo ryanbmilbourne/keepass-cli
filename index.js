@@ -34,7 +34,7 @@ db.loadFile(dbPath, function(err, api) {
     }
 
     var rawDatabase = api.getRaw();
-    //console.log(util.inspect(rawDatabase.KeePassFile.Root.Group));
+    console.log(util.inspect(rawDatabase.KeePassFile.Root.Group));
 
     getGroups(rawDatabase, function(err, groups) {
         if(err) {console.log('error retrieving groups');}

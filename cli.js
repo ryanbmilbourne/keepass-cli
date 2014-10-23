@@ -3,26 +3,48 @@
 var util = require('util'),
     kpe = require('./lib/KeePassEditor.js'),
     _ = require('underscore'),
+    prompt = require('prompt'),
     argv = require('yargs')
         .count('verbose')
         .alias('v','verbose')
-        .demand('database')
+        .demand(['database'])
         .alias('d','database')
-        .alias('p','pass')
+        .usage('$0 --database [path]')
         .argv;
 
-if(!argv.pass && !argv.key) {
-    console.log('Error: no credentials provided.');
-    process.exit(1);
+prompt.message = '';
+prompt.delimiter = '';
+
+var openDb = function(db, pw){
+    var obj = new kpe(db, pw);
+    obj.on('open', function() {
+        console.log('opened database');
+        obj.getGroups(function(err, data){
+            console.log('Groups:');
+            _.each(data, function(i){
+                console.log(' -%s',i);
+            });
+        });
+    });
+};
+
+if(!argv.key) {
+    prompt.start();
+    prompt.colors = false;
+    prompt.get([{
+        name: 'password',
+        description: 'Enter database password:',
+        required: true,
+        hidden: true,
+        conform: function(value){
+            return true;
+        }
+    }], function(err, results){
+        if(err){
+            console.err('error getting credentials');
+            process.exit(1);
+        }
+        openDb(argv.database,results.password);
+    });
 }
 
-var dbPath = 'test.kdbx';
-
-var obj = new kpe(argv.database, argv.pass);
-obj.on('open', function() {
-    console.log('opened database');
-    obj.getEntries('banking',function(err, data) {
-        if(err) { console.log(err); }
-        else { console.log(util.inspect(data.Entry[0].String)); }
-    }); 
-});
