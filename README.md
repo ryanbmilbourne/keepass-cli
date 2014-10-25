@@ -3,7 +3,7 @@ keepass-cli
 
 A KeePass command line tool, written in node.js
 
-Keepass' command line tool requires Mono for OS X, with dodgy support for OS X.  This is a project meant to replicate the features brought by KPScript (
+Keepass' command line tool requires Mono for OS X, with dodgy support for OS X.  This is a project meant to replicate the features brought by KPScript (http://keepass.info/help/v2_dev/scr_sc_index.html).
 
 Here's the todo list:
 - [ ] ListGroups
